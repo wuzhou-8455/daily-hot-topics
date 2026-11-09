@@ -1,0 +1,44 @@
+{
+  "name": "hotspot-daily",
+  "version": "0.1.1",
+  "private": true,
+  "author": "hotspot-daily",
+  "description": "热点日报 - 每日汇总全网热点（微博/小红书/知乎/抖音/头条/百度/夸克）",
+  "main": "src/main/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --enable-logging",
+    "icons": "python tools/make-icons.py",
+    "selftest": "electron . --selftest --no-sandbox --disable-gpu --no-tray",
+    "fetch:once": "electron . --fetch-once --no-sandbox --disable-gpu --no-tray",
+    "export:once": "electron . --export-once --no-sandbox --disable-gpu --no-tray",
+    "pack:dir": "electron-builder --dir",
+    "dist:zip": "electron-builder --win zip"
+  },
+  "devDependencies": {
+    "electron": "31.7.7",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "appId": "com.hotspot.daily",
+    "productName": "热点日报",
+    "artifactName": "hotspot-daily-${version}-win-${arch}.${ext}",
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "config/**/*",
+      "package.json",
+      "!**/*.map"
+    ],
+    "win": {
+      "icon": "build/icon.png",
+      "target": [
+        "zip"
+      ]
+    }
+  }
+}

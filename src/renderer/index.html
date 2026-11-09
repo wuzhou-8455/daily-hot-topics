@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>热点日报</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-main">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19V9m5 10V5m5 14v-7m5 7V8"/>
+        </svg>
+      </span>
+      <div class="brand-text">
+        <h1>热点日报</h1>
+        <p data-el="header-line">加载中…</p>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <button type="button" class="btn btn-ghost" data-action="today">今天</button>
+      <select class="date-select" data-el="date-select" aria-label="选择日期" hidden></select>
+      <button type="button" class="btn btn-ghost" data-action="manager">管理模式</button>
+    </div>
+  </div>
+
+  <div class="statusbar" data-el="source-status"></div>
+
+  <div class="toast" data-el="toast" hidden></div>
+</header>
+
+<div class="toolbar">
+  <div class="modes" data-el="modes" role="tablist" aria-label="视图模式">
+    <button type="button" class="mode-btn" data-mode="platform" role="tab">平台</button>
+    <button type="button" class="mode-btn" data-mode="board" role="tab">类目</button>
+  </div>
+  <input type="search" class="search" data-el="search" placeholder="筛选标题…" autocomplete="off">
+</div>
+
+<div class="subbar" data-el="subbar"></div>
+
+<main>
+  <section class="section" data-el="top10-section">
+    <div class="section-head">
+      <h2>全平台 Top 10 <span class="section-sub">跨平台合并 · 按热度加权</span></h2>
+    </div>
+    <div class="cards" data-el="top10"></div>
+  </section>
+
+  <section class="section" data-el="platform-section" hidden>
+    <div class="section-head">
+      <h2><span data-el="platform-title">平台</span> <span class="section-sub">该平台原始热榜 · 按平台自身排名</span></h2>
+      <span class="section-count" data-el="platform-count"></span>
+    </div>
+    <div class="list" data-el="platform-list"></div>
+  </section>
+
+  <div data-el="boards"></div>
+
+  <div class="empty" data-el="empty" hidden>
+    <p data-el="empty-title">这里还没有内容。</p>
+    <p class="muted" data-el="empty-hint">可用管理模式中的「立即抓取」生成，或等待每天 08:30 的自动抓取。</p>
+  </div>
+</main>
+
+<footer class="footer">
+  <span data-el="footer-line"></span>
+</footer>
+
+<div class="modal" data-el="modal" hidden>
+  <div class="modal-mask" data-action="modal-close"></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-head">
+      <h3 id="modal-title" data-el="modal-title">管理模式</h3>
+      <button type="button" class="btn btn-sm" data-action="modal-close">关闭</button>
+    </div>
+    <div class="modal-body" data-el="modal-body"></div>
+  </div>
+</div>
+
+<dialog class="ai-confirm" data-el="ai-confirm" aria-labelledby="ai-confirm-title">
+  <h3 id="ai-confirm-title" data-el="ai-confirm-title">确认生成解读</h3>
+  <p class="ai-confirm-target" data-el="ai-confirm-target"></p>
+  <p class="group-note" data-el="ai-confirm-detail"></p>
+  <p class="ai-fee-note" data-el="ai-confirm-fee"></p>
+  <div class="row-actions">
+    <button type="button" class="btn" data-el="ai-confirm-cancel">取消</button>
+    <button type="button" class="btn btn-primary" data-el="ai-confirm-accept">确认生成</button>
+  </div>
+</dialog>
+
+<script src="summaries.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

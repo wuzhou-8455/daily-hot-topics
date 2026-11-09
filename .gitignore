@@ -1,0 +1,14 @@
+node_modules/
+dist/
+/hotspot-daily/
+/data/
+/.selftest/
+/.tmp/
+*.log
+*.lnk
+.env
+.env.*
+.npmrc
+ai_key.bin
+auth.json
+/config.json
